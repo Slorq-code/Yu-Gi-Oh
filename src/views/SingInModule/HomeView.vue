@@ -32,6 +32,10 @@
                         <input v-model="userForm.password" type="password" required />
                         <label for="">Clave</label>
                     </div>
+                    <div class="input-group">
+                        <input v-model="userForm.confirm_password" type="password" required />
+                        <label for="">Confirma tu clave</label>
+                    </div>
                     <button type="submit" class="btn">Enviar</button>
                     <div class="sign-link">
                         <p>
@@ -90,6 +94,7 @@
                 last_name:'',
                 email:'',
                 password:'',
+                confirm_password:'',
             })
             return {
                 userForm,
