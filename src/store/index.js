@@ -1,14 +1,12 @@
 import { createStore } from 'vuex'
+import auth from '../views/SingInModule/store'
 
-export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+
+const store = createStore({
   modules: {
+    auth,
   }
+
 })
+
+export default store
