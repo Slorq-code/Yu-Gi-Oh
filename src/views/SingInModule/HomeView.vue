@@ -12,22 +12,24 @@
                 : ' ',
         ]">
             <div class="form-wrapper sign-up">
-                <form action="">
+                <form action=""
+                @submit.prevent="onsubmit"
+                >
                     <h2>Registrate</h2>
                     <div class="input-group">
-                        <input type="text" required />
+                        <input v-model="userForm.name" type="text" required />
                         <label for="">Nombre</label>
                     </div>
                     <div class="input-group">
-                        <input type="text" required />
+                        <input v-model="userForm.last_name" type="text" required />
                         <label for="">Apellido</label>
                     </div>
                     <div class="input-group">
-                        <input type="email" required />
+                        <input v-model="userForm.email" type="email" required />
                         <label for="">Correo</label>
                     </div>
                     <div class="input-group">
-                        <input type="password" required />
+                        <input v-model="userForm.password" type="password" required />
                         <label for="">Clave</label>
                     </div>
                     <button type="submit" class="btn">Enviar</button>
@@ -74,16 +76,31 @@
 </template>
 
 <script>
-// @ is an alias to /src
-export default {
-    name: "HomeView",
-    data() {
-        return {
-            handleClick1: false,
-            handleClick2: false,
-        };
-    },
-};
+
+    import { ref } from 'vue'
+    import data from 'vue'
+    import useAuth from './composables/useAuth'
+
+
+    export default {
+        setup() {
+            const { createUser } = useAuth()
+            const userForm = ref({
+                name:'',
+                last_name:'',
+                email:'',
+                password:'',
+            })
+            return {
+                userForm,
+                data,
+                onsubmit: async() => {
+                    createUser(userForm.value)
+                    
+                }
+            }
+        }
+    }
 </script>
 
 <style scoped>
