@@ -10,10 +10,11 @@ export const createUser = async ({ commit }, user) => {
         password,
         password_confirm,
     });
-    console.log(data);
+    delete user.password
+    delete user.password_confirm
+    commit('loginUser',{user})
     return { ok: true };
     } catch (error) {
-        console.log(error.response.data.message);
-        return { ok: false, message: "...." };
+        return { ok: false, message: error.response.data.message};
     }
 };
