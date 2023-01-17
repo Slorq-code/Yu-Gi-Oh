@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <img class="logoVue" alt="Vue logo" src="@/assets/logo.png" />
+        <img class="logoVue" alt="VueLogo" src="@/assets/logo.png" />
         <img class="logoProject" src="@/assets/imgs/logoYuGiOh.png" alt="title" />
         <div :class="[
             'wrapper',
@@ -17,23 +17,23 @@
                 >
                     <h2>Registrate</h2>
                     <div class="input-group">
-                        <input v-model="userForm.name" type="text" required />
+                        <input v-model="userForm.first_name" type="text" required/>
                         <label for="">Nombre</label>
                     </div>
                     <div class="input-group">
-                        <input v-model="userForm.last_name" type="text" required />
+                        <input v-model="userForm.last_name" type="text" required/>
                         <label for="">Apellido</label>
                     </div>
                     <div class="input-group">
-                        <input v-model="userForm.email" type="email" required />
+                        <input v-model="userForm.email" type="email" required/>
                         <label for="">Correo</label>
                     </div>
                     <div class="input-group">
-                        <input v-model="userForm.password" type="password" required />
+                        <input v-model="userForm.password" type="password" required/>
                         <label for="">Clave</label>
                     </div>
                     <div class="input-group">
-                        <input v-model="userForm.confirm_password" type="password" required />
+                        <input v-model="userForm.password_confirm" type="password" required/>
                         <label for="">Confirma tu clave</label>
                     </div>
                     <button type="submit" class="btn">Enviar</button>
@@ -82,26 +82,23 @@
 <script>
 
     import { ref } from 'vue'
-    import data from 'vue'
-    import useAuth from './composables/useAuth'
+    import useAuth from '../SingInModule/composables/useAuth'
 
 
     export default {
         setup() {
             const { createUser } = useAuth()
             const userForm = ref({
-                name:'',
+                first_name:'',
                 last_name:'',
                 email:'',
                 password:'',
-                confirm_password:'',
+                password_confirm:'',
             })
             return {
                 userForm,
-                data,
                 onsubmit: async() => {
                     createUser(userForm.value)
-                    
                 }
             }
         }
