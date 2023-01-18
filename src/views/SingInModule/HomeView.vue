@@ -6,34 +6,31 @@
             'wrapper',
             handleClick1 === true
                 ? 'animate-signIn'
-                : ' '  
-            && handleClick2 === false
-                ? 'animate-signUp'
-                : ' ',
+                : ' ' && handleClick2 === false
+                    ? 'animate-signUp'
+                    : ' ',
         ]">
             <div class="form-wrapper sign-up">
-                <form action=""
-                @submit.prevent="onsubmit"
-                >
+                <form action="" @submit.prevent="registerSubmit">
                     <h2>Registrate</h2>
                     <div class="input-group">
-                        <input v-model="userForm.first_name" type="text" required/>
+                        <input v-model="userForm.first_name" type="text" required />
                         <label for="">Nombre</label>
                     </div>
                     <div class="input-group">
-                        <input v-model="userForm.last_name" type="text" required/>
+                        <input v-model="userForm.last_name" type="text" required />
                         <label for="">Apellido</label>
                     </div>
                     <div class="input-group">
-                        <input v-model="userForm.email" type="email" required/>
+                        <input v-model="userForm.email" type="email" required />
                         <label for="">Correo</label>
                     </div>
                     <div class="input-group">
-                        <input v-model="userForm.password" type="password" required/>
+                        <input v-model="userForm.password" type="password" required />
                         <label for="">Clave</label>
                     </div>
                     <div class="input-group">
-                        <input v-model="userForm.password_confirm" type="password" required/>
+                        <input v-model="userForm.password_confirm" type="password" required />
                         <label for="">Confirma tu clave</label>
                     </div>
                     <button type="submit" class="btn">Enviar</button>
@@ -48,16 +45,15 @@
                     </div>
                 </form>
             </div>
-
             <div class="form-wrapper sign-in">
-                <form action="">
+                <form action="" @submit.prevent="loginSubmit">
                     <h2>Ingresa</h2>
                     <div class="input-group">
-                        <input type="text" required />
+                        <input v-model="userPush.email" type="text" required />
                         <label for="">Correo</label>
                     </div>
                     <div class="input-group">
-                        <input type="password" required />
+                        <input v-model="userPush.password" type="password" required />
                         <label for="">Clave</label>
                     </div>
                     <div class="forgot-pass">
@@ -80,43 +76,54 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import Swal from "sweetalert2";
+import { useRouter } from "vue-router";
+import useAuth from "../SingInModule/composables/useAuth";
 
-    import { ref } from 'vue'
-    import { useRouter } from 'vue-router'
-    import useAuth from '../SingInModule/composables/useAuth'
-    import Swal from 'sweetalert2'
-
-
-    export default {
-        setup() {
-            let handleClick1 = false
-            let handleClick2 = false
-            const router = useRouter()
-            const { createUser } = useAuth()
-            const userForm = ref({
-                first_name:'',
-                last_name:'',
-                email:'',
-                password:'',
-                password_confirm:'',
-            })
-            return {
-                handleClick1,
-                handleClick2,
-                userForm,
-                onsubmit: async() => {
-                    const { ok, message } = await createUser(userForm.value)
-                    console.log( ok, message )
-                    if( !ok ) {
-                        Swal.fire('Verifica la informacion', message, 'error')
-                    } else {
-                        router.push({ name: 'about' })
-                    }
+export default {
+    setup() {
+        let handleClick1 = false;
+        let handleClick2 = false;
+        const router = useRouter();
+        const { createUser, loginUser } = useAuth();
+        const userForm = ref({
+            first_name: "",
+            last_name: "",
+            email: "",
+            password: "",
+            password_confirm: "",
+        });
+        const userPush = ref({
+            email: "",
+            password: "",
+        });
+        return {
+            handleClick1,
+            handleClick2,
+            userForm,
+            userPush,
+            onsubmit: async () => {
+            },
+            registerSubmit: async () => {
+                const { ok, message } = await createUser(userForm.value);
+                if (!ok) {
+                    Swal.fire("Verifica la informacion", message, "error");
+                } else {
+                    router.push({ name: "about" });
                 }
-
-            }
-        }
-    }
+            },
+            loginSubmit: async () => {
+                const { ok, message } = await loginUser(userPush.value);
+                if (!ok) {
+                    Swal.fire("Verifica la informacion", message, "error");
+                } else {
+                    router.push({ name: "about" });
+                }
+            },
+        };
+    },
+};
 </script>
 
 <style scoped>
