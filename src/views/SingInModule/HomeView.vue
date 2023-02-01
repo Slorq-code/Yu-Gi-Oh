@@ -110,7 +110,7 @@ export default {
                 if (!ok) {
                     Swal.fire("Verifica la informacion", message, "error");
                 } else {
-                    router.push({ name: "about" });
+                    router.push({ name: "grid" });
                 }
             },
             loginSubmit: async () => {
@@ -118,7 +118,7 @@ export default {
                 if (!ok) {
                     Swal.fire("Verifica la informacion", message, "error");
                 } else {
-                    router.push({ name: "about" });
+                    router.push({ name: "grid" });
                 }
             },
         };
@@ -127,6 +127,7 @@ export default {
 </script>
 
 <style scoped>
+
 .home {
     position: relative;
     display: flex;

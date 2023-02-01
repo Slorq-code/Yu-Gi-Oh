@@ -9,7 +9,10 @@
 
 <script>
 export default {
-    name: "Header"
+    name: "Header",
+    setup() {
+
+    }
 };
 </script>
 

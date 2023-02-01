@@ -27,7 +27,10 @@ export const signInUser = async ({ commit }, user) => {
         email,
         password,
     });
+    delete user.password
     commit('loginUser',{user})
+
+    
     console.log(data)
     return { ok: true };
     } catch (error) {

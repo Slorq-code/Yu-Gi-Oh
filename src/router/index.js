@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/SingInModule/HomeView.vue'
 import About from '../views/SingInModule/AboutView.vue'
+import grid from '../views/GridModule/Grid.vue'
 
 const routes = [
   {
@@ -12,7 +13,12 @@ const routes = [
     path: '/about',
     name: 'about',
     component: About
-  }
+  },
+  {
+    path: '/grid',
+    name: 'grid',
+    component: grid
+  },
 ]
 
 const router = createRouter({

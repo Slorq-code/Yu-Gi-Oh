@@ -27,7 +27,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-image: url("../src/assets/imgs/FullScreen.png");
+  background-url: url("../src/assets/imgs/FullScreen.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
