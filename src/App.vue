@@ -1,40 +1,47 @@
 <template>
-  <Header/>
-  <router-view id="router-view"/>
-  <Footer/>
+  <div class="container">
+    <Header/>
+    <router-view id="router-view"/>
+    <Footer/>
+  </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import Header from './components/Header.vue'
 export default {
+  name: 'App',
   components: {
     Header,
-    Footer
+    Footer,
   },
 }
 </script>
 
 <style>
-#app {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background-url: url("../src/assets/imgs/FullScreen.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
+:root {
+    --background-body: #24282F;
+    --background-card: #3C3E44;
+    --text-white: #FFFFFF;
+    --text-gray: #c0c0c0;
+    --text-orange: #FF9800;
 }
-#router-view {
-  background-color:rgba(155,118,77,0.8);
-  height: 87%;
-  width: 100%;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+body {
+    background-color: var(--background-body);
+    color: var(--text-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
 </style>

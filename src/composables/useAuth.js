@@ -5,11 +5,11 @@ const useAuth = () => {
     const store = useStore()
 
     const createUser = async (user) => {
-        const resp = await store.dispatch('auth/createUser', user)
+        const resp = await store.dispatch('createUser', user)
         return resp
     }
     const loginUser = async (user) => {
-        const resp = await store.dispatch('auth/signInUser', user)
+        const resp = await store.dispatch('signInUser', user)
         return resp
     }
 

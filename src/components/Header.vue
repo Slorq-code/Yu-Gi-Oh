@@ -1,41 +1,47 @@
 <template>
-    <div class="header">
-        <nav>
-            <router-link to="/">Inicio</router-link> |
-            <router-link to="/about">Mas info</router-link>
-        </nav>
+    <div class="headerContainer" >
+        <img 
+            class="headerImg"
+            src="../assets/Morty-img.png" 
+            alt="Morty"
+        >
+        <img 
+            class="headerTitle"
+            src="../assets/Names.png" 
+            alt="Morty"
+        >
+        <img 
+            class="headerImg"
+            src="../assets/SunRick-img.png" 
+            alt="Morty"
+        >
     </div>
 </template>
 
 <script>
 export default {
-    name: "Header",
-    setup() {
-
-    }
-};
+    name: 'Header',
+    components: {
+    },
+}
 </script>
 
-<style scoped>
-.header {
+<style>
+.headerContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    background-color: #decb98;
     width: 100%;
-    height: 50px;
-    border-radius: 50px 50px 0px 0px;
+    max-height: 110px;
+    border-radius: 25px;
+    box-shadow: 0px 3px 6px #2c8f92;
 }
-nav {
-    padding: 30px;
+.headerImg {
+    width: auto;
+    height: 150px;
 }
-
-nav a {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-    color: #e14841;
+.headerTitle {
+    width: 20%;
+    height: auto;
 }
 </style>
