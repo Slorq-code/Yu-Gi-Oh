@@ -1,75 +1,80 @@
 <template>
-    <div class="home">
-        <img class="logoVue" alt="" src="" />
-        <img class="logoProject" src="" alt="" />
-        <div :class="[
-            'wrapper',
-            handleClick1 === true
+    <div class="flex-box" >
+        <div class="aboutUs" >
+            <img  class="bigImg" src="../assets/AboutUs.png" alt="bigImg">
+            <span class="aboutUsText" >"Rick y Morty" es una serie animada de ciencia ficción absurda y llena de humor negro. Sigue las aventuras del científico borracho Rick y su nieto Morty a través de múltiples universos y dimensiones. Con una animación impresionante y una trama profunda, esta serie es una sátira inteligente y un must-watch para los fans de la ciencia ficción y el humor.
+            </span>
+        </div>
+        <div class="home">
+            <div :class="[
+                'wrapper',
+                handleClick1 === true
                 ? 'animate-signIn'
                 : ' ' && handleClick2 === false
-                    ? 'animate-signUp'
-                    : ' ',
-        ]">
-            <div class="form-wrapper sign-up">
-                <form action="" @submit.prevent="registerSubmit">
-                    <h2>Registrate</h2>
-                    <div class="input-group">
-                        <input v-model="userForm.first_name" type="text" required />
-                        <label for="">Nombre</label>
-                    </div>
-                    <div class="input-group">
-                        <input v-model="userForm.last_name" type="text" required />
-                        <label for="">Apellido</label>
-                    </div>
-                    <div class="input-group">
-                        <input v-model="userForm.email" type="email" required />
-                        <label for="">Correo</label>
-                    </div>
-                    <div class="input-group">
-                        <input v-model="userForm.password" type="password" required />
-                        <label for="">Clave</label>
-                    </div>
-                    <div class="input-group">
-                        <input v-model="userForm.password_confirm" type="password" required />
-                        <label for="">Confirma tu clave</label>
-                    </div>
-                    <button type="submit" class="btn">Enviar</button>
-                    <div class="sign-link">
-                        <p>
-                            Ya tienes cuenta?
-                            <a @click="
-                            handleClick1 = !handleClick1;
-                            handleClick2 = !handleClick2;
-                            " href="#" class="signIn-link">Ingresa por aqui</a>
-                        </p>
-                    </div>
-                </form>
-            </div>
-            <div class="form-wrapper sign-in">
-                <form action="" @submit.prevent="loginSubmit">
-                    <h2>Ingresa</h2>
-                    <div class="input-group">
-                        <input v-model="userPush.email" type="text" required />
-                        <label for="">Correo</label>
-                    </div>
-                    <div class="input-group">
-                        <input v-model="userPush.password" type="password" required />
-                        <label for="">Clave</label>
-                    </div>
-                    <div class="forgot-pass">
-                        <a href="#">Clave perdida?</a>
-                    </div>
-                    <button type="submit" class="btn">Entrar</button>
-                    <div class="sign-link">
-                        <p>
-                            Aun no te registras?
-                            <a @click="
-                            handleClick1 = !handleClick1;
-                            handleClick2 = !handleClick2;
-                            " href="#" class="signUp-link">Click aqui</a>
-                        </p>
-                    </div>
-                </form>
+                ? 'animate-signUp'
+                : ' ',
+            ]">
+                <div class="form-wrapper sign-up">
+                    <form action="" @submit.prevent="registerSubmit">
+                        <h2>Registrate</h2>
+                        <div class="input-group">
+                            <input v-model="userForm.first_name" type="text" required />
+                            <label for="">Nombre</label>
+                        </div>
+                        <div class="input-group">
+                            <input v-model="userForm.last_name" type="text" required />
+                            <label for="">Apellido</label>
+                        </div>
+                        <div class="input-group">
+                            <input v-model="userForm.email" type="email" required />
+                            <label for="">Correo</label>
+                        </div>
+                        <div class="input-group">
+                            <input v-model="userForm.password" type="password" required />
+                            <label for="">Clave</label>
+                        </div>
+                        <div class="input-group">
+                            <input v-model="userForm.password_confirm" type="password" required />
+                            <label for="">Confirma tu clave</label>
+                        </div>
+                        <button type="submit" class="btn">Enviar</button>
+                        <div class="sign-link">
+                            <p>
+                                Ya tienes cuenta?
+                                <a @click="
+                                handleClick1 = !handleClick1;
+                                handleClick2 = !handleClick2;
+                                " href="#" class="signIn-link">Ingresa por aqui</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-wrapper sign-in">
+                    <form action="" @submit.prevent="loginSubmit">
+                        <h2>Ingresa</h2>
+                        <div class="input-group">
+                            <input v-model="userPush.email" type="text" required />
+                            <label for="">Correo</label>
+                        </div>
+                        <div class="input-group">
+                            <input v-model="userPush.password" type="password" required />
+                            <label for="">Clave</label>
+                        </div>
+                        <div class="forgot-pass">
+                            <a href="#">Clave perdida?</a>
+                        </div>
+                        <button type="submit" class="btn">Entrar</button>
+                        <div class="sign-link">
+                            <p>
+                                Aun no te registras?
+                                <a @click="
+                                handleClick1 = !handleClick1;
+                                handleClick2 = !handleClick2;
+                                " href="#" class="signUp-link">Click aqui</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -127,7 +132,37 @@ export default {
 </script>
 
 <style scoped>
+.flex-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px;
+}
+.aboutUs{
+    width: 50%;
+    height: 70vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.aboutUsText {
+    position: absolute;
+    z-index: -1;
+    bottom: 20%;
+    right: 16%;
+    width: 45%;
+    transform: rotate(-25deg);
+}
+.bigImg {
+    position: absolute;
+    width: auto;
+    height: 65vh;
+}
 .home {
+    width: 50%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -146,8 +181,8 @@ export default {
 }
 .wrapper {
     position: relative;
-    width: calc(400px + 250px);
-    height: calc(500px + 250px);
+    width: calc(400px + 150px);
+    height: calc(500px + 150px);
 }
 .form-wrapper {
     position: absolute;
@@ -169,7 +204,7 @@ export default {
     transform: rotate(3.5deg);
     animation: animateRotate 0.7s ease-in-out forwards;
     animation-delay: 0.3s;
-    background-color: #decb98;
+    background-color: #ffffff;
     border: 1px black solid;
     border-radius: 30px;
 }
@@ -193,7 +228,7 @@ export default {
 .wrapper.animate-signIn .form-wrapper.sign-up {
     animation: animateRotate 0.7s ease-in-out forwards;
     animation-delay: 0.3s;
-    background-color: #decb98;
+    background-color: #ffffff;
 }
 @keyframes animateRotate {
     0% {
